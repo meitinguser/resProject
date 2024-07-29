@@ -43,9 +43,6 @@ const connection = mysql.createConnection({
     //password: '', 
     //database: 'restaurantapp33'
     
-    
-    
-    
     //brah test
     host: 'db4free.net',
     user: 'meitinguser',

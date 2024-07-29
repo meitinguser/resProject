@@ -1,3 +1,5 @@
 {
-    "explorer.sortOrder": "default"
+    "explorer.sortOrder": "default",
+    "appService.defaultWebAppToDeploy": "/subscriptions/ccb52989-891b-458c-aac2-557ba55266c4/resourceGroups/c237meitingrestaurant/providers/Microsoft.Web/sites/c237meitingrestaurant",
+    "appService.deploySubpath": "."
 }

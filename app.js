@@ -38,16 +38,10 @@ app.use(express.urlencoded({
 
 // Create MySQL connection
 const connection = mysql.createConnection({
-    //host: 'localhost',
-    //user: 'root',
-    //password: '', 
-    //database: 'restaurantapp33'
-    
-    //brah test
-    host: 'db4free.net',
+    host: 'restaurantapp.c5lxsijfw2ub.us-east-1.rds.amazonaws.com',
     user: 'meitinguser',
-    password: 'mt2017db4free',
-    database: 'c237resapp'
+    password: 'mt2017dbpass', 
+    database: 'restaurantapp33'
 });
 
 connection.connect((err) => {

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Restauropedia</title>
+
+    
+    <%- include ('partials/fonts_html.ejs') %>
+    <%- include ('partials/fonts_css.ejs') %>
+
+    <%- include ('partials/banner.ejs') %>
+        <div id="banner">
+            <div id="banner-content" class="orelega-one-regular">
+                <p>Restauropedia</p>
+            </div>
+        </div>
+        <div id="main-content">
+            <p>This text is only here to load the main banner</p>
+        </div>
+
+        <%- include ('partials/style.ejs') %>
+</head>
+<body class="lato-regular">
+    <%- include ('partials/navbar.ejs') %>
+    <div class="container mt-3">
+        <h2><%= restaurant.name %></h2>
+        (Restaurant ID: <%= restaurant.id%>)
+        
+            <div class="mb-3 mt-3">
+                <!-- code here to display restaurant image -->
+                <img src="/images/<%= restaurant.image %>" width="40%">
+                
+            </div>
+
+            <div class="mb-3 mt-3">
+                <table class="" style="width: 30%">
+                    <thead>
+                        <tr>
+                            <th>Type Of Restaurant</th>
+                            <th>Price Range</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><%= restaurant.type %></td>
+                            <td><%= restaurant.priceindicator %> $<%= restaurant.pricerange %></td>
+                        </tr>
+                    </tbody>
+            </table>
+            </div>
+
+            <hr>
+
+            <div class="mb-3 mt-3">
+                <label for="type">Description</label>
+                <br>
+                <!-- description -->
+                <p style="width: 70%"><%= restaurant.description %></p> 
+                
+            </div>
+
+            <hr>
+
+            <div class="mb-3 mt-3">
+                <label for="type">Address</label>
+                <br>
+                <!-- address -->
+                <a><%= restaurant.address %></a>
+                
+            </div>
+            
+            <a class="otherbuttons" href="/">Back</a>
+
+            <% restauID = restaurant.id %>
+            <% restauName = restaurant.name %>      
+            <a class="otherbuttons" href="/restaurants/<%= restaurant.id %>/reviews">View Reviews</a>
+            <br><br>
+
+            
+            <td><a class="otherbuttons" href="/restaurants/<%= restaurant.id %>/update">Edit Restaurant</a></td>
+            <a class="otherbuttons" style="background-color: #d9534f; color: white;" href="/restaurants/<%= restaurant.id %>/delete" onclick="return confirm('Are you sure you want to delete this restaurant?')">Delete Restaurant</a>
+    </div>
+</body>
+</html>
+

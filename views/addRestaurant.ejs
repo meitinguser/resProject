@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Restauropedia</title>
+
+    
+    <%- include ('partials/fonts_html.ejs') %>
+    <%- include ('partials/fonts_css.ejs') %>
+    
+    <%- include ('partials/banner.ejs') %>
+        <div id="banner">
+            <div id="banner-content" class="orelega-one-regular">
+                <p>Restauropedia</p>
+            </div>
+        </div>
+        <div id="main-content">
+            <p>This text is only here to load the main banner</p>
+        </div>
+        
+        <%- include ('partials/style.ejs') %>
+</head>
+<body class="lato-regular">
+    <%- include ('partials/navbar.ejs') %>
+    <div class="container mt-3">
+        <h2>Add Restaurant</h2>
+        <p>Add a restaurant to our website!</p>
+
+        <!-- code for form tag to add new restaurant -->
+        <form action="/restaurants" method="POST" enctype="multipart/form-data">
+            <div class="mb-3 mt-3">
+                <label for="name">Restaurant Name:</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter restaurant name" name="name" style="width: 50%;" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="type">Type:</label>
+                <input type="text" class="form-control" id="type" placeholder="Enter type of restaurant" name="type" style="width: 50%;" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="name">Description:</label><br>
+                <textarea id="description" name="description" rows="4" cols="50" placeholder="Enter description of the restaurant"></textarea>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="type">Address:</label>
+                <input type="text" class="form-control" id="address" placeholder="Enter the restaurants' address/location" name="address" style="width: 50%;" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="type">Image:</label><br>
+                <input type="file" id="image" name="image" accept="image/*" required>
+            </div>
+            
+            
+            <div class="mb-3 mt-3">
+                <label for="type">Price Range: </label>
+                <p>(Above/Under/Around) this price</p>
+                <select class="form-select sidebyside" id="priceindicator" name="priceindicator" style="width: 20%;">
+                    <option value="Above">Above</option>
+                    <option value="Under">Under</option>
+                    <option value="Around">Around</option>
+                </select>
+                <input type="number" style="width: 20%" class="form-control sidebyside" id="pricerange" placeholder="Enter price range" name="pricerange">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

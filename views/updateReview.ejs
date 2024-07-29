@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Restauropedia</title>
+
+    
+    <%- include ('partials/fonts_html.ejs') %>
+    <%- include ('partials/fonts_css.ejs') %>
+
+    <%- include ('partials/banner.ejs') %>
+        <div id="banner">
+            <div id="banner-content" class="orelega-one-regular">
+                <p>Restauropedia</p>
+            </div>
+        </div>
+        <div id="main-content">
+            <p>This text is only here to load the main banner</p>
+        </div>
+        
+        <%- include ('partials/style.ejs') %>
+</head>
+<body>
+    <%- include ('partials/navbar.ejs') %>
+    <div class="container mt-3">
+        <h2>Update Review</h2>
+
+        <!-- form tag to update review -->
+        <form action="/restaurants/<%= review.restaurantId %>/reviews/<%= review.id %>/update" method="POST">
+            <div class="mb-3 mt-3">
+                <label for="reviewername">Reviewer Name</label>
+                <!-- TODO: Insert code to display original name of student in the value property -->
+                <input type="text" class="form-control" id="reviewername" value = "<%= review.reviewername %>" placeholder="Enter restaurant name" name="reviewername" style="width: 20%;">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="reviewrating">Rating: <span id="rangeSlider"></span></label>
+                <!-- TODO: Insert code to display original name of student in the value property -->
+                <input type="range" min="0" max="5" step="0.1" id="reviewrating" value = "<%= review.reviewrating %>" placeholder="Enter type of restaurant" name="reviewrating">
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="reviewtitle">Title</label>
+                <!-- TODO: Insert code to display original name of student in the value property -->
+                <input type="text" class="form-control" id="reviewtitle" value = "<%= review.reviewtitle %>" placeholder="Enter type of restaurant" name="reviewtitle" style="width: 20%;">
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="reviewdescription">Review Description</label>
+                <!-- TODO: Insert code to display original name of student in the value property -->
+                <br>
+                <textarea id="reviewdescription" name="reviewdescription" rows="4" cols="50" placeholder="Enter review description" style="width: 50%;"><%= review.reviewdescription %></textarea>
+            </div>
+            
+            <div class="mb-3 mt-3">
+                <label for="reviewdate">Date</label>
+                <!-- TODO: Insert code to display original name of student in the value property -->
+                <input type="date" class="form-control" id="reviewdate" value="<%= review.reviewdate.toLocaleString('ja-JP', {year: 'numeric', month: '2-digit', day: '2-digit'}).replaceAll('/', '-') %>" name="reviewdate" style="width: 30%;">
+            </div>
+            <button type="submit" class="btn btn-primary">Save Review</button>
+        </form>
+
+        <br>
+        <a class="otherbuttons" href="/restaurants/<%= restaurant.id %>/reviews/<%= review.id %>">Discard Edit</a>
+    </div>
+    
+    <script>
+        var slider = document.getElementById("reviewrating");
+        var output = document.getElementById("rangeSlider");
+        output.innerHTML = slider.value;
+        
+        slider.oninput = function() {
+          output.innerHTML = this.value;
+        }
+    </script>
+</body>
+</html>
